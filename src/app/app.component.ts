@@ -5,5 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'Coveoed Booze Index';
+  title = 'Boozle';
+
+  search(searchText: String){
+    console.log(searchText);
+  }
 }

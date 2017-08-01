@@ -1,3 +1,9 @@
+app-root h1 {
+  font-size: 40px; }
+app-root div {
+  margin-top: 10px; }
 
+.centered {
+  text-align: center; }
 
 /*# sourceMappingURL=styles.css.map */
