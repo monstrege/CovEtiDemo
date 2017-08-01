@@ -10,3 +10,11 @@
     <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 </div>
 
+<div *ngIf="resultList">
+  <ul>
+    <li *ngFor="let result of resultList">
+      <div>{{result.title}}</div>
+    </li>
+  </ul>
+</div>
+
