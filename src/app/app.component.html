@@ -3,18 +3,45 @@
   <h1>
     Welcome to {{title}}!
   </h1>
-  <img width="300" src="assets/image/beer-outline.png">
+  <img width="150" src="assets/image/beer-outline.png">
 </div>
 <div class="centered">
     <label>Search: </label>
     <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
 </div>
 
-<div *ngIf="resultList">
-  <ul>
-    <li *ngFor="let result of resultList">
-      <div>{{result.title}}</div>
-    </li>
-  </ul>
-</div>
+<div class="mainBody">
+  <div class="leftBody"></div>
+  <div class="rightBody">
 
+    <div class="btn-group resultTableButtons">
+      <button type="button" class="btn btn-default dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{sortOptions[activeSortIndex][language]}} <span class="caret"></span> 
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let sortOption of sortOptions; let i = index">
+          <a href="#" (click)="sortBy(i)">{{sortOption.fr}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <table *ngIf="resultList" [load-mask]="loading" class="table">  
+      <tr>
+        <th class="column1">Image</th>
+        <th class="column2">Name</th> 
+        <th class="column3">Price</th> 
+      </tr>
+      <tr *ngFor="let result of resultList">
+        <td class="column1">
+          <img class='productImage' [src]="result.raw.tpthumbnailuri" [alt]="result.title">
+        </td> 
+        <td class="column2">
+          <div>{{result.title}}</div>
+        </td>
+        <td class="column3">
+          <div>{{result.raw.tpprixnum.toFixed(2)}}$</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

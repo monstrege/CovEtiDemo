@@ -1,0 +1,55 @@
+body{
+    padding: 10px;
+}
+
+app-root{
+    h1{
+        font-size: 40px;
+    }
+
+    #search-box{
+        width: 500px;
+    }
+
+    div{
+        margin-top: 10px;
+    }
+
+    .mainBody{
+        width: 100%;
+        display: flex;
+
+        .leftBody{
+            flex: 1;
+        }
+
+        .rightBody{
+            flex: 7;
+        }
+    }
+
+    .resultTableButtons{
+        float: right;
+        margin-bottom: 10px;
+    }
+
+    .table{
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .column1{
+            width: 10px;
+        }
+        .column2{
+            width: 500px;
+        }
+        .column3{
+            width: 1px;
+        }
+        .productImage{
+            // width: 100%;
+            height: 100%;
+        }
+    }
+}
