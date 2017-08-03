@@ -1,0 +1,20 @@
+.load-mask {
+  position: relative; }
+  .load-mask:before {
+    opacity: 0;
+    content: '.';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.25);
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 0;
+    z-index: -5000; }
+  .load-mask.load-mask-loading:before {
+    opacity: 1;
+    z-index: 5000; }
+
+/*# sourceMappingURL=loadmask.css.map */
