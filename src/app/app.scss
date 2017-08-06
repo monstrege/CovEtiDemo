@@ -35,21 +35,39 @@ app-root{
 
     .table{
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color: #e7e7ef;
         }
 
-        .column1{
-            width: 10px;
-        }
-        .column2{
-            width: 500px;
-        }
-        .column3{
-            width: 1px;
-        }
-        .productImage{
-            // width: 100%;
-            height: 100%;
+        .tableRow{
+            cursor: pointer;
+            &:hover{
+                border: 3px solid rgba(128, 128, 128, 0.33);
+                background-color: rgba(255, 255, 0, 0.1)
+            }
+            td{
+                height: 100px;
+            }
+            &.selectedRow{
+                td{
+                    height: 400px;
+                }
+            }
+
+            .column1{
+                width: 300px;
+                
+                .productImage{
+                    width: auto;
+                    height: 100%;
+                }
+            }
+            // .column2{
+                // width: 500px;
+            // }
+            .lastColumn{
+                width: 100px;
+                max-width: 100px
+            }
         }
     }
 }

@@ -18,14 +18,23 @@ app-root .resultTableButtons {
   float: right;
   margin-bottom: 10px; }
 app-root .table tr:nth-child(even) {
-  background-color: #dddddd; }
-app-root .table .column1 {
-  width: 10px; }
-app-root .table .column2 {
-  width: 500px; }
-app-root .table .column3 {
-  width: 1px; }
-app-root .table .productImage {
-  height: 100%; }
+  background-color: #e7e7ef; }
+app-root .table .tableRow {
+  cursor: pointer; }
+  app-root .table .tableRow:hover {
+    border: 3px solid rgba(128, 128, 128, 0.33);
+    background-color: rgba(255, 255, 0, 0.1); }
+  app-root .table .tableRow td {
+    height: 100px; }
+  app-root .table .tableRow.selectedRow td {
+    height: 400px; }
+  app-root .table .tableRow .column1 {
+    width: 300px; }
+    app-root .table .tableRow .column1 .productImage {
+      width: auto;
+      height: 100%; }
+  app-root .table .tableRow .lastColumn {
+    width: 100px;
+    max-width: 100px; }
 
 /*# sourceMappingURL=app.css.map */

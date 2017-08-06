@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }      from '@angular/http';
 import { NgModule } from '@angular/core';
-import { NgGridModule } from 'angular2-grid';
-
 import { AppComponent } from './app.component';
 
 import { CoveoConnectorService } from './service/coveo-connector.service';
 import { LoadMaskDirective } from './directive/loadmask.directive';
+
+import { IonRangeSliderModule } from "ng2-ion-range-slider";
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { LoadMaskDirective } from './directive/loadmask.directive';
   imports: [
     BrowserModule,
     HttpModule,
-    NgGridModule
+    IonRangeSliderModule
   ],
   providers: [CoveoConnectorService],
   bootstrap: [AppComponent]

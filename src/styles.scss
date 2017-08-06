@@ -1,5 +1,9 @@
 @import 'app/app.scss';
 @import 'app/directive/loadmask.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/ion-rangeslider/css/ion.rangeSlider.css";
+@import "../node_modules/ion-rangeslider/css/ion.rangeSlider.skinFlat.css";
+
 
 //Global style
 .centered {

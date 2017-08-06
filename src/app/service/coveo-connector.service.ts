@@ -19,9 +19,9 @@ export class CoveoConnectorService {
     }
 
   public activeSortIndex: BehaviorSubject<number> = new BehaviorSubject(0);
-  // get activeSortIndex(){
-  //   return this._activeSortIndex;
-  // }
+  public prizeMin: BehaviorSubject<number> = new BehaviorSubject(null);
+  public prizeMax: BehaviorSubject<number> = new BehaviorSubject(null);
+
 
   private _sortOptions: any[] = [{
     fr: 'Pertinence',
@@ -44,11 +44,6 @@ export class CoveoConnectorService {
   constructor(private http: Http) { }
 
   search(boozeName: String, token:String){
-    // if((!boozeName && !token) || (!this.lastBoozeName || !this.lastToken)){
-    //    return Observable<Response>.of([]);
-    // } else if((boozeName && !token) || (!boozeName && token)){
-    //   return Observable<Response>.of([]);
-    // }
     this.loading.next(true);
     const queryIdentifier: String = 'search';
 
@@ -81,6 +76,15 @@ export class CoveoConnectorService {
     this.activeSortIndex.next(sortIndex);
 
     this.searchParam.sortCriteria = !!this.sortOptions[sortIndex].key ? "@tpprixnum " + this.sortOptions[sortIndex].key : "";
-    // this.search(this.lastBoozeName, this.lastToken);
   }
+
+  // setPrizeRange(min: number, max: number){
+  //   if(min === this.prizeMin.getValue() && max === this.prizeMax.getValue()){
+  //     return;
+  //   }
+
+  //   this.activeSortIndex.next(sortIndex);
+
+  //   this.searchParam.sortCriteria = !!this.sortOptions[sortIndex].key ? "@tpprixnum " + this.sortOptions[sortIndex].key : "";
+  // }
 }
