@@ -1,0 +1,88 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="centered">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <img width="150" src="assets/image/beer-outline.png">
+</div>
+<div class="centered">
+    <label>Search: </label>
+    <input #searchBox id="search-box" (keyup)="setSearchText(searchBox.value)" value={{inputText}}/>
+</div>
+<div class="mainBody">
+  <div class="leftBody">
+    <div *ngIf="inputText && resultPrizeMin && resultPrizeMax"> {{this.prizeName}}
+      <ion-range-slider #sliderElement
+        type="double"
+        [min]=resultPrizeMin
+        [max]=resultPrizeMax
+        [from]=resultPrizeMin
+        [from_min]=resultPrizeMin
+        [from_max]=resultPrizeMax
+        from_shadow="true"
+        [to]=resultPrizeMax
+        [to_min]=resultPrizeMin
+        [to_max]=resultPrizeMax
+        to_shadow="true"
+        [prefix]="prizeName"
+        postfix=" $"
+        decorate_both="false"
+        (onUpdate)="prizeScrollOnUpdate($event)"
+        (onChange)="prizeScrollOnChange($event)"
+        (onFinish)="prizeScrollOnFinish($event)">
+      </ion-range-slider>
+    </div>
+
+  </div>
+  <div class="rightBody">
+    <div *ngIf="resultList && inputText" class="btn-group resultTableButtons">
+      <button type="button" class="btn btn-default dropdown-toggle btn-danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{sortOptions[activeSortIndex][language]}} <span class="caret"></span>  
+      </button>
+      <ul class="dropdown-menu">
+        <li *ngFor="let sortOption of sortOptions; let i = index">
+          <a (click)="sortBy(i)">{{sortOption.fr}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <table *ngIf="resultList && resultList.length >= 1 && inputText" [load-mask]="loading" class="table">  
+      <thead>
+        <tr>
+          <th class="column1">Image</th>
+          <th class="column2">Name</th> 
+          <th class="column3">Evaluation</th> 
+          <th class="lastColumn">Price</th> 
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let result of resultList; let i = index" (click)="expandRow(i)" class="tableRow" [class.selectedRow]="i == selectedRow">
+        <td class="column1">
+          <img class='productImage' [src]="result.raw.tpthumbnailuri" [alt]="result.title">
+        </td> 
+        <td class="column2">
+           <div>{{result.title}}</div> 
+        </td>
+        <td class="column3">
+          <div *ngFor="let element of fakeArray(result.rating)" class="glyphicon glyphicon-glass" aria-hidden="true"></div>
+        </td>
+        <td class="lastColumn">
+          <div *ngIf="result.raw.tpprixnum">{{result.raw.tpprixnum.toFixed(2)}}$</div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div *ngIf="resultList && resultList.length === 0 && inputText && !loading">{{emptyMessage}}</div>
+  </div>
+</div>
+<nav *ngIf="totalPage" class="centered" aria-label="...">
+      <ul class="pagination pagination-lg">
+        <li class="page-item" [class.disabled]="activePage == 1">
+          <a class="page-link" tabindex="-1" (click)="goToPreviousPage()">Previous</a>
+        </li>
+         <li *ngFor="let count of fakeArray(totalPage); let i = index" class="page-item"><a class="page-link" (click)="goToPage(i+1)">{{i+1}}</a></li>
+        <li class="page-item" [class.disabled]="activePage == totalPage">
+          <a class="page-link" (click)="goToNextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
